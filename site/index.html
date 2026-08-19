@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A computer-vision portfolio project for skin-condition image classification using ResNet50 transfer learning.">
+    <title>Skin Disease Image Classification | Portfolio Project</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Computer Vision Portfolio Project</p>
+        <h1>Skin Disease Image Classification</h1>
+        <p class="lede">An end-to-end six-class dermatology-image classifier: compared transfer-learning architectures, selected and fine-tuned ResNet50 through class-aware evaluation, and delivered the final model through a Flask application with Grad-CAM visual explanations.</p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/Giannis-Patram/skin-disease-image-classification" target="_blank" rel="noopener noreferrer">View source code on GitHub</a>
+        </div>
+      </section>
+
+      <section class="notice">
+        <strong>Educational project only.</strong> This prototype is not a medical device and must not be used to diagnose or treat a condition.
+      </section>
+
+      <section class="metrics" aria-label="Key project metrics">
+        <article><strong>6</strong><span>image classes</span></article>
+        <article><strong>~89%</strong><span>best validation accuracy</span></article>
+        <article><strong>&gt;84%</strong><span>macro F1 across evaluated models</span></article>
+      </section>
+
+      <section class="grid overview">
+        <div>
+          <p class="eyebrow">The challenge</p>
+          <h2>Classifying an imbalanced medical-image dataset</h2>
+          <p>The model predicts one of six classes: Infection, Eczema, Acne, Pigment, Benign, and Malign. The project covered dataset selection, preprocessing, transfer learning, fine-tuning, evaluation, and application development—not only training a single model.</p>
+          <p>Because the dataset was imbalanced, overall accuracy alone could hide weak performance in less-represented classes. Model selection therefore considered macro F1, per-class precision and recall, and confusion patterns alongside validation accuracy.</p>
+        </div>
+        <div class="card">
+          <h3>Core stack</h3>
+          <ul>
+            <li>Python, TensorFlow, Keras</li>
+            <li>ResNet50 and transfer learning</li>
+            <li>Flask and SQLite</li>
+            <li>OpenCV and Grad-CAM</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <p class="eyebrow">Technical decisions</p>
+          <h2>How the model was built</h2>
+          <ul>
+            <li>Compared multiple transfer-learning architectures and selected ResNet50 using validation performance, macro F1, per-class metrics, and confusion patterns.</li>
+            <li>Used class weights to reduce the effect of unequal class representation.</li>
+            <li>Applied early stopping, learning-rate reduction, and checkpoints during training.</li>
+            <li>Compared results using precision, recall, F1, and confusion matrices—not accuracy alone.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Research workflow</p>
+          <h2>Training and model selection</h2>
+          <p>The original notebooks record the experimentation process: ImageNet-pretrained backbones, class weighting, early stopping, learning-rate reduction, model checkpoints, training curves, classification reports, and confusion matrices.</p>
+          <p>ResNet50 was chosen as the final application model after comparing architectures and fine-tuning results against the project’s evaluation criteria.</p>
+        </article>
+      </section>
+
+      <section class="grid overview">
+        <div class="card">
+          <p class="eyebrow">From model to application</p>
+          <h2>Designed for an end user</h2>
+          <p>The Flask application accepts an uploaded image, preprocesses it for the trained model, returns a predicted class and probability distribution, and generates a Grad-CAM overlay for the specific prediction.</p>
+          <p>It also includes user registration, login, and per-user upload history, demonstrating how a trained model can be integrated into a complete application workflow.</p>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Evaluation insights and limitations</p>
+          <h2>Interpreting model performance responsibly</h2>
+          <ul>
+            <li>Performance varied across classes with visually overlapping characteristics, where the model showed greater confusion.</li>
+            <li>Underrepresented categories received less reliable predictions, illustrating the effect of class imbalance.</li>
+            <li>A clinical system would require external validation, bias analysis, privacy safeguards, and regulatory approval.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="demo">
+        <p class="eyebrow">Application demo</p>
+        <h2>Prediction probabilities and Grad-CAM</h2>
+        <p>The interface returns the predicted class and confidence distribution, then highlights image regions that most influenced the model. Grad-CAM is an attention visualisation, not a clinical explanation.</p>
+        <img src="assets/prediction-result.png" alt="App screen showing an eczema prediction, class probabilities, and a Grad-CAM image">
+      </section>
+    </main>
+    <footer>Built as a Computer Science dissertation project.</footer>
+  </body>
+</html>

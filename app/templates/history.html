@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload History</title>
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='background.jpg') }}");
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 20px;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        table {
+            margin: 0 auto;
+            color: white;
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        img {
+            max-width: 100px;
+            border-radius: 10px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            background-color: #0b7dda;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Upload History</h2>
+        {% if uploads %}
+        <table>
+            <tr>
+                <th>Image</th>
+                <th>Prediction</th>
+            </tr>
+            {% for upload in uploads %}
+            <tr>
+                <td><img src="{{ url_for('static', filename='uploads/' ~ upload.filename) }}"></td>
+                <td>{{ upload.prediction }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No uploads found.</p>
+        {% endif %}
+        <a href="/">Back to Upload</a>
+    </div>
+</body>
+</html>

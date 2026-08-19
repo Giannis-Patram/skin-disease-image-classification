@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Image</title>
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='background.jpg') }}");
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 20px;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        input[type="file"],
+        input[type="submit"],
+        a {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+        }
+
+        input[type="file"] {
+            background-color: white;
+            color: black;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            background-color: #2196F3;
+            text-decoration: none;
+            color: white;
+        }
+
+        a:hover {
+            background-color: #0b7dda;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload an Image for Prediction</h2>
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required><br>
+            <input type="submit" value="Upload & Predict">
+        </form>
+        <br>
+        <a href="/history">View History</a> |
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>

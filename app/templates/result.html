@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='background.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 20px;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        img {
+            max-width: 300px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255,255,255,0.2);
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            background-color: #0b7dda;
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .probability {
+            font-size: 16px;
+            margin: 5px 0;
+            color: #cccccc; /* Soft gray for all */
+        }
+
+        .top-probability {
+            color: #00FF99; /* Bright green for highest */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Prediction: {{ prediction }}</h2>
+       <!-- <p>{{ explanation }}</p> -->
+
+       <h3>Prediction Probabilities:</h3>
+        <ul>
+            {% for label, prob in probabilities %}
+                <li class="probability {% if prob > 80 %}top-probability{% endif %}">
+                    {{ label }}: {{ prob }}%
+                </li>
+            {% endfor %}
+        </ul>
+        <p>{{ explanation }}</p>
+
+      <!--  <img src="{{ url_for('static', filename=image_file) }}" alt="Original Image"><br> -->
+        <img src="{{ url_for('static', filename='uploads/' ~ gradcam_file) }}" alt="Grad-CAM Image"><br>
+
+        <a href="/">Back</a>
+    </div>
+</body>
+</html>

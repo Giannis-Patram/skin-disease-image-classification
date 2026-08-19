@@ -1,0 +1,14 @@
+# Python and local configuration
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.DS_Store
+
+# Runtime data and user uploads
+app/db.sqlite3
+app/static/uploads/
+!app/static/uploads/.gitkeep
+
+# Large, locally supplied artifacts
+app/model.h5
